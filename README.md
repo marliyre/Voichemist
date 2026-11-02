@@ -2,14 +2,13 @@
 
 <img width="7680" height="3213" alt="Banner Game (1)" src="https://github.com/user-attachments/assets/cf44f479-fb16-4c52-8fcf-ad16ec79a41a" />
 
-***Strategy, Survival, Turn-Based Combat, 2D, & Platform PC***
+***A Tactical Alchemy 2D Arcade Game featuring Medieval/Fantasy Anomaly Eradication***
 
 
 
 ![GitHub release (latest by date)](https://img.shields.io/badge/Status-In_Development-amber?style=for-the-badge)
-![Engine](https://img.shields.io/badge/Engine-Unity_2D-blue?style=for-the-badge&logo=unity)
-![Genre](https://img.shields.io/badge/Genre-Tactical_Arcade_--_Crafting-purple?style=for-the-badge)
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+![Engine](https://img.shields.io/badge/Engine-Godot-blue?style=for-the-badge&logo=unity)
+![Genre](https://img.shields.io/badge/Genre-Strategy_--_Crafting_--_Turn-Based_Combat_--_2D_--_PC_-purple?style=for-the-badge)
 
 <p align="center">
   <a href="#-about-the-game">About</a> •
