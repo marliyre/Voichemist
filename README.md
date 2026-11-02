@@ -8,7 +8,7 @@
 
 ![GitHub release (latest by date)](https://img.shields.io/badge/Status-In_Development-amber?style=for-the-badge)
 ![Engine](https://img.shields.io/badge/Engine-Godot-blue?style=for-the-badge&logo=unity)
-![Genre](https://img.shields.io/badge/Genre-Strategy_--_Crafting_--_Turn-Based_Combat_--_2D_--_PC_-purple?style=for-the-badge)
+![Genre](https://img.shields.io/badge/Genre-Strategy_--_Crafting_--_Turn--Based_Combat_--_2D_--_PC-purple?style=for-the-badge)
 
 <p align="center">
   <a href="#-about-the-game">About</a> •
