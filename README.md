@@ -54,9 +54,7 @@ Gim ini terbagi menjadi dua fase utama yang saling mendukung:
 
 ## 👾 Anomaly Hierarchies
 
-<img width="6144" height="7680" alt="Anomali Biasa (1)" src="https://github.com/user-attachments/assets/f515fb23-b69e-4387-8e17-9006da6fc3e1" />
-
-Nama anomali ini adalah The Wanderers yang dikategorikan menjadi 3 tingkat:
+Nama anomali di dalam permainan ini adalah The Wanderers yang dikategorikan menjadi 3 tingkat:
 
 | Klasifikasi | HP | Attack Damage | Deskripsi & Mekanik |
 | :--- | :--- | :--- | :--- |
