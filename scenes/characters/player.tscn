@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dty510cavunfy"]
+
+[ext_resource type="Script" uid="uid://bnd7ghr7mf5u6" path="res://scenes/characters/player.gd" id="1_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://bpwvhufxlb1gi" path="res://scenes/objects/viexir.tscn" id="2_dqkch"]
+[ext_resource type="Texture2D" uid="uid://d2fsc3kx1lesu" path="res://assets/sprites/icon.svg" id="3_qlg0r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yvnld"]
+size = Vector2(128, 128)
+
+[node name="Player" type="CharacterBody2D" unique_id=308233322]
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("1_qhqgy")
+viexir_scene = ExtResource("2_dqkch")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=671858843]
+position = Vector2(65, -86)
+texture = ExtResource("3_qlg0r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=734643168]
+position = Vector2(65, -86)
+shape = SubResource("RectangleShape2D_yvnld")
+
+[node name="ThrowPoint" type="Marker2D" parent="." unique_id=356438888]
+position = Vector2(157, -115)
+
+[node name="Line2D" type="Line2D" parent="ThrowPoint" unique_id=1041159590]
+points = PackedVector2Array(0, 0, 50, 0)
+width = 3.0
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1615777203]
+offset_top = -180.0
+offset_right = 129.0
+offset_bottom = -153.0
+max_value = 1200.0
+show_percentage = false
+
+[node name="TrajectoryLine" type="Line2D" parent="." unique_id=2120096878]
+width = 3.0

@@ -1,0 +1,985 @@
+[gd_scene format=3 uid="uid://cs2tu5tu4aoua"]
+
+[ext_resource type="Script" uid="uid://b6foixjfxj1wq" path="res://scenes/levels/world.gd" id="1_world"]
+[ext_resource type="PackedScene" uid="uid://dty510cavunfy" path="res://scenes/characters/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" uid="uid://cr4ekyus0d2pj" path="res://scenes/characters/anomaly.tscn" id="3_anomaly"]
+[ext_resource type="Script" uid="uid://cq0l7pllsdd27" path="res://scripts/turn_manager.gd" id="4_turn"]
+[ext_resource type="Script" uid="uid://cvrxdg8nithlq" path="res://scenes/objects/death_zone.gd" id="5_death"]
+[ext_resource type="Script" uid="uid://ytfeelk64wf3" path="res://scripts/main_camera.gd" id="6_cam"]
+[ext_resource type="Script" uid="uid://cfaflo1yfitca" path="res://scripts/item_manager.gd" id="7_item"]
+[ext_resource type="Script" uid="uid://bmdxxad167drc" path="res://scripts/scope_lens.gd" id="8_lens"]
+[ext_resource type="Script" uid="uid://t5m7ffwe6rkr" path="res://ui/game_over_screen.gd" id="9_gameover"]
+[ext_resource type="Script" uid="uid://cia1jbmqptb5q" path="res://ui/victory_screen.gd" id="10_victory"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bsy4x"]
+size = Vector2(2468, 152)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_top_panel"]
+bg_color = Color(0.08, 0.09, 0.12, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.65, 0.52, 0.25, 0.85)
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 6
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bar_bg"]
+bg_color = Color(0.05, 0.05, 0.07, 0.85)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.35, 0.35, 0.4, 0.6)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hp_fill"]
+bg_color = Color(0.82, 0.15, 0.15, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sp_fill"]
+bg_color = Color(0.12, 0.52, 0.95, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gem_orb"]
+bg_color = Color(0.05, 0.15, 0.28, 0.95)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.2, 0.85, 1, 0.9)
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
+shadow_color = Color(0, 0.6, 1, 0.3)
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_flee"]
+bg_color = Color(0.65, 0.12, 0.12, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9, 0.7, 0.3, 0.9)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_action_panel"]
+bg_color = Color(0.09, 0.1, 0.14, 0.94)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.7, 0.56, 0.26, 0.85)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_size = 6
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_power_fill"]
+bg_color = Color(0.95, 0.72, 0.12, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_modal_card"]
+bg_color = Color(0.1, 0.11, 0.15, 0.98)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.8, 0.65, 0.25, 0.9)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+shadow_size = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_weakpoint_panel"]
+bg_color = Color(0.2, 0.12, 0.05, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.8, 0.2, 0.9)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="World" type="Node2D" unique_id=564264909]
+position = Vector2(0, 632)
+script = ExtResource("1_world")
+
+[node name="Player" parent="." unique_id=308233322 instance=ExtResource("2_player")]
+
+[node name="Anomaly" parent="." unique_id=1708998334 instance=ExtResource("3_anomaly")]
+position = Vector2(1088, -84)
+
+[node name="TurnManager" type="Node" parent="." unique_id=902196538]
+script = ExtResource("4_turn")
+
+[node name="Timer" type="Timer" parent="TurnManager" unique_id=786911696]
+
+[node name="PlayerTurnTimer" type="Timer" parent="TurnManager" unique_id=484691854]
+one_shot = true
+
+[node name="DeathZone" type="Area2D" parent="." unique_id=246699581]
+script = ExtResource("5_death")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone" unique_id=30116967]
+position = Vector2(579, 141)
+shape = SubResource("RectangleShape2D_bsy4x")
+
+[node name="MainCamera" type="Camera2D" parent="." unique_id=1033456886]
+zoom = Vector2(1.5, 1.5)
+script = ExtResource("6_cam")
+
+[node name="Terrain" type="StaticBody2D" parent="." unique_id=1250938239]
+
+[node name="Polygon2D" type="Polygon2D" parent="Terrain" unique_id=1769033216]
+color = Color(0.457088, 0.224198, 0, 1)
+polygon = PackedVector2Array(-70.5, 56, -13.5, -3, 149, 50, 305, 32, 337, 7, 381, 25, 470, 23, 585, -40, 604, -23, 686, -14, 757, 23, 945, 32, 1174, 28, 1195, -1, 1221, 54)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Terrain" unique_id=588711068]
+polygon = PackedVector2Array(-70.5, 56, -13.5, -3, 149, 50, 305, 32, 337, 7, 381, 25, 470, 23, 585, -40, 604, -23, 686, -14, 757, 23, 945, 32, 1174, 28, 1195, -1, 1221, 54)
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=897305339]
+
+[node name="TopHUD" type="Panel" parent="UI" unique_id=457249883]
+custom_minimum_size = Vector2(1112, 82)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -556.0
+offset_top = 8.0
+offset_right = 556.0
+offset_bottom = 90.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_top_panel")
+
+[node name="PlayerStatus" type="HBoxContainer" parent="UI/TopHUD" unique_id=1843941064]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 370.0
+offset_bottom = 76.0
+theme_override_constants/separation = 10
+
+[node name="AvatarFrame" type="ColorRect" parent="UI/TopHUD/PlayerStatus" unique_id=343911615]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_vertical = 4
+color = Color(0.18, 0.22, 0.32, 1)
+
+[node name="Label" type="Label" parent="UI/TopHUD/PlayerStatus/AvatarFrame" unique_id=1665299007]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "🧙"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Bars" type="VBoxContainer" parent="UI/TopHUD/PlayerStatus" unique_id=715324754]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="PlayerNameLabel" type="Label" parent="UI/TopHUD/PlayerStatus/Bars" unique_id=1091144757]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 1, 1)
+theme_override_font_sizes/font_size = 13
+text = "PLAYER (Lv. 1)"
+
+[node name="HPContainer" type="HBoxContainer" parent="UI/TopHUD/PlayerStatus/Bars" unique_id=412581557]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="HPText" type="Label" parent="UI/TopHUD/PlayerStatus/Bars/HPContainer" unique_id=1929585397]
+custom_minimum_size = Vector2(22, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.35, 0.35, 1)
+theme_override_font_sizes/font_size = 11
+text = "HP"
+
+[node name="HPBar" type="ProgressBar" parent="UI/TopHUD/PlayerStatus/Bars/HPContainer" unique_id=387253007]
+custom_minimum_size = Vector2(210, 16)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_bar_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hp_fill")
+value = 100.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="UI/TopHUD/PlayerStatus/Bars/HPContainer/HPBar" unique_id=594074305]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 11
+text = "100 / 100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SPContainer" type="HBoxContainer" parent="UI/TopHUD/PlayerStatus/Bars" unique_id=721898178]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="SPText" type="Label" parent="UI/TopHUD/PlayerStatus/Bars/SPContainer" unique_id=1695088963]
+custom_minimum_size = Vector2(22, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.35, 0.75, 1, 1)
+theme_override_font_sizes/font_size = 11
+text = "SP"
+
+[node name="SPBar" type="ProgressBar" parent="UI/TopHUD/PlayerStatus/Bars/SPContainer" unique_id=1918165973]
+custom_minimum_size = Vector2(210, 14)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_bar_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_sp_fill")
+value = 50.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="UI/TopHUD/PlayerStatus/Bars/SPContainer/SPBar" unique_id=1660370309]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 10
+text = "50 / 100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buffs" type="HBoxContainer" parent="UI/TopHUD/PlayerStatus/Bars" unique_id=356788874]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="BadgePoison" type="Label" parent="UI/TopHUD/PlayerStatus/Bars/Buffs" unique_id=2120859742]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 1, 0.4, 1)
+theme_override_font_sizes/font_size = 11
+text = "☠ Poison x0"
+
+[node name="BadgeShield" type="Label" parent="UI/TopHUD/PlayerStatus/Bars/Buffs" unique_id=1250946186]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.2, 1)
+theme_override_font_sizes/font_size = 11
+text = "🛡️ DEFENSE"
+
+[node name="BadgeWind" type="Label" parent="UI/TopHUD/PlayerStatus/Bars/Buffs" unique_id=909819859]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 11
+text = "💨 WIND"
+
+[node name="BadgeInvisible" type="Label" parent="UI/TopHUD/PlayerStatus/Bars/Buffs" unique_id=1840240536]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.6, 1, 1)
+theme_override_font_sizes/font_size = 11
+text = "👻 INVISIBLE"
+
+[node name="CenterGem" type="VBoxContainer" parent="UI/TopHUD" unique_id=547712018]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -75.0
+offset_top = 2.0
+offset_right = 75.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="TurnLabel" type="Label" parent="UI/TopHUD/CenterGem" unique_id=561451830]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.95, 1, 1)
+theme_override_font_sizes/font_size = 12
+text = "PLAYER TURN"
+horizontal_alignment = 1
+
+[node name="GemOrb" type="Panel" parent="UI/TopHUD/CenterGem" unique_id=1276817797]
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_gem_orb")
+
+[node name="TimerLabel" type="Label" parent="UI/TopHUD/CenterGem/GemOrb" unique_id=1657619025]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_font_sizes/font_size = 26
+text = "60"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EnemyStatus" type="HBoxContainer" parent="UI/TopHUD" unique_id=538859217]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -395.0
+offset_top = -34.0
+offset_right = -55.0
+offset_bottom = 34.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Bars" type="VBoxContainer" parent="UI/TopHUD/EnemyStatus" unique_id=780842764]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="EnemyNameLabel" type="Label" parent="UI/TopHUD/EnemyStatus/Bars" unique_id=1062329400]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.45, 0.45, 1)
+theme_override_font_sizes/font_size = 13
+text = "ANOMALI [Common]"
+horizontal_alignment = 2
+
+[node name="HPContainer" type="HBoxContainer" parent="UI/TopHUD/EnemyStatus/Bars" unique_id=1547759361]
+layout_mode = 2
+theme_override_constants/separation = 6
+alignment = 2
+
+[node name="HPBar" type="ProgressBar" parent="UI/TopHUD/EnemyStatus/Bars/HPContainer" unique_id=808194443]
+custom_minimum_size = Vector2(210, 16)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_bar_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hp_fill")
+value = 100.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="UI/TopHUD/EnemyStatus/Bars/HPContainer/HPBar" unique_id=164022070]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 11
+text = "190 / 190"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HPText" type="Label" parent="UI/TopHUD/EnemyStatus/Bars/HPContainer" unique_id=632133556]
+custom_minimum_size = Vector2(22, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.35, 0.35, 1)
+theme_override_font_sizes/font_size = 11
+text = "HP"
+
+[node name="Debuffs" type="HBoxContainer" parent="UI/TopHUD/EnemyStatus/Bars" unique_id=1829801098]
+layout_mode = 2
+theme_override_constants/separation = 6
+alignment = 2
+
+[node name="BadgeNetral" type="Label" parent="UI/TopHUD/EnemyStatus/Bars/Debuffs" unique_id=152553694]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 1, 0.45, 1)
+theme_override_font_sizes/font_size = 11
+text = "🧪 Neutralized (-40% ATK: 2 R)"
+
+[node name="AvatarFrame" type="ColorRect" parent="UI/TopHUD/EnemyStatus" unique_id=1832099256]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_vertical = 4
+color = Color(0.35, 0.15, 0.15, 1)
+
+[node name="Label" type="Label" parent="UI/TopHUD/EnemyStatus/AvatarFrame" unique_id=2000764527]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "👾"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BtnPause" type="Button" parent="UI/TopHUD" unique_id=536090493]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -21.0
+offset_right = -6.0
+offset_bottom = 21.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "⏸️"
+
+[node name="BottomHUD" type="Control" parent="UI" unique_id=1801342361]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -120.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="BtnKabur" type="Button" parent="UI/BottomHUD" unique_id=1114699449]
+custom_minimum_size = Vector2(100, 52)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = -80.0
+offset_right = 122.0
+offset_bottom = -24.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_flee")
+text = "🏃 FLEE"
+
+[node name="ActionPanel" type="PanelContainer" parent="UI/BottomHUD" unique_id=1862228819]
+custom_minimum_size = Vector2(980, 94)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1014.0
+offset_top = -104.0
+offset_right = -16.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_action_panel")
+
+[node name="HBox" type="HBoxContainer" parent="UI/BottomHUD/ActionPanel" unique_id=2086448178]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="PowerRuler" type="VBoxContainer" parent="UI/BottomHUD/ActionPanel/HBox" unique_id=109457822]
+custom_minimum_size = Vector2(340, 0)
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="UI/BottomHUD/ActionPanel/HBox/PowerRuler" unique_id=186559745]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
+theme_override_font_sizes/font_size = 12
+text = "THROWING POWER"
+
+[node name="SubLabel" type="Label" parent="UI/BottomHUD/ActionPanel/HBox/PowerRuler" unique_id=1017972347]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.75, 1)
+theme_override_font_sizes/font_size = 10
+text = "HOLD [SPACE] TO CHARGE | RELEASE TO THROW"
+
+[node name="RulerBar" type="Control" parent="UI/BottomHUD/ActionPanel/HBox/PowerRuler" unique_id=14063480]
+custom_minimum_size = Vector2(330, 24)
+layout_mode = 2
+
+[node name="PowerBar" type="ProgressBar" parent="UI/BottomHUD/ActionPanel/HBox/PowerRuler/RulerBar" unique_id=510019736]
+custom_minimum_size = Vector2(330, 18)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -9.0
+offset_right = 330.0
+offset_bottom = 9.0
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_bar_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_power_fill")
+show_percentage = false
+
+[node name="Needle" type="ColorRect" parent="UI/BottomHUD/ActionPanel/HBox/PowerRuler/RulerBar" unique_id=1949906671]
+custom_minimum_size = Vector2(4, 24)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -12.0
+offset_right = 4.0
+offset_bottom = 12.0
+grow_vertical = 2
+color = Color(1, 0.2, 0.2, 1)
+
+[node name="Ticks" type="HBoxContainer" parent="UI/BottomHUD/ActionPanel/HBox/PowerRuler" unique_id=1145925037]
+layout_mode = 2
+
+[node name="T0" type="Label" parent="UI/BottomHUD/ActionPanel/HBox/PowerRuler/Ticks" unique_id=1754571173]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.6, 0.6, 0.65, 1)
+theme_override_font_sizes/font_size = 9
+text = "0"
+
+[node name="T20" type="Label" parent="UI/BottomHUD/ActionPanel/HBox/PowerRuler/Ticks" unique_id=827833664]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.6, 0.6, 0.65, 1)
+theme_override_font_sizes/font_size = 9
+text = "20"
+horizontal_alignment = 1
+
+[node name="T40" type="Label" parent="UI/BottomHUD/ActionPanel/HBox/PowerRuler/Ticks" unique_id=1228444975]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.6, 0.6, 0.65, 1)
+theme_override_font_sizes/font_size = 9
+text = "40"
+horizontal_alignment = 1
+
+[node name="T60" type="Label" parent="UI/BottomHUD/ActionPanel/HBox/PowerRuler/Ticks" unique_id=2089584989]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.6, 0.6, 0.65, 1)
+theme_override_font_sizes/font_size = 9
+text = "60"
+horizontal_alignment = 1
+
+[node name="T80" type="Label" parent="UI/BottomHUD/ActionPanel/HBox/PowerRuler/Ticks" unique_id=1115236339]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.6, 0.6, 0.65, 1)
+theme_override_font_sizes/font_size = 9
+text = "80"
+horizontal_alignment = 1
+
+[node name="T100" type="Label" parent="UI/BottomHUD/ActionPanel/HBox/PowerRuler/Ticks" unique_id=1642665056]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.6, 0.65, 1)
+theme_override_font_sizes/font_size = 9
+text = "100"
+horizontal_alignment = 2
+
+[node name="PowerValue" type="Label" parent="UI/BottomHUD/ActionPanel/HBox/PowerRuler" unique_id=975571586]
+visible = false
+layout_mode = 2
+text = "0%"
+
+[node name="VSeparator" type="VSeparator" parent="UI/BottomHUD/ActionPanel/HBox" unique_id=463363316]
+layout_mode = 2
+
+[node name="SabukAlkimia" type="VBoxContainer" parent="UI/BottomHUD/ActionPanel/HBox" unique_id=1064531025]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="UI/BottomHUD/ActionPanel/HBox/SabukAlkimia" unique_id=2120559376]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
+theme_override_font_sizes/font_size = 12
+text = "ALCHEMY BELT (VIEXIRS & POTIONS)"
+
+[node name="SubLabel" type="Label" parent="UI/BottomHUD/ActionPanel/HBox/SabukAlkimia" unique_id=1590184383]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.75, 1)
+theme_override_font_sizes/font_size = 10
+text = "SCROLL MOUSE OR PRESS [1 - 8]"
+
+[node name="Slots" type="HBoxContainer" parent="UI/BottomHUD/ActionPanel/HBox/SabukAlkimia" unique_id=98412886]
+layout_mode = 2
+theme_override_constants/separation = 6
+script = ExtResource("7_item")
+player_node = NodePath("../../../../../../Player")
+enemy_node = NodePath("../../../../../../Anomaly")
+
+[node name="Slot1" type="Button" parent="UI/BottomHUD/ActionPanel/HBox/SabukAlkimia/Slots" unique_id=2098730155]
+custom_minimum_size = Vector2(64, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "1
+Attack
+x10"
+
+[node name="Slot2" type="Button" parent="UI/BottomHUD/ActionPanel/HBox/SabukAlkimia/Slots" unique_id=1155885049]
+custom_minimum_size = Vector2(64, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "2
+Defense
+x5(3)"
+
+[node name="Slot3" type="Button" parent="UI/BottomHUD/ActionPanel/HBox/SabukAlkimia/Slots" unique_id=1069242170]
+custom_minimum_size = Vector2(64, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "3
+Neutral
+x5(5)"
+
+[node name="Slot4" type="Button" parent="UI/BottomHUD/ActionPanel/HBox/SabukAlkimia/Slots" unique_id=1667978821]
+custom_minimum_size = Vector2(64, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "4
+Heal
+x5(2)"
+
+[node name="Slot5" type="Button" parent="UI/BottomHUD/ActionPanel/HBox/SabukAlkimia/Slots" unique_id=700266726]
+custom_minimum_size = Vector2(64, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "5
+Stamina
+x5(2)"
+
+[node name="Slot6" type="Button" parent="UI/BottomHUD/ActionPanel/HBox/SabukAlkimia/Slots" unique_id=835152591]
+custom_minimum_size = Vector2(64, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "6
+Wind
+x5(1)"
+
+[node name="Slot7" type="Button" parent="UI/BottomHUD/ActionPanel/HBox/SabukAlkimia/Slots" unique_id=616134804]
+custom_minimum_size = Vector2(64, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "7
+Invis
+x5(1)"
+
+[node name="Slot8" type="Button" parent="UI/BottomHUD/ActionPanel/HBox/SabukAlkimia/Slots" unique_id=1216277067]
+custom_minimum_size = Vector2(64, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "8
+Scope
+x5"
+
+[node name="SpiralScopeModal" type="Control" parent="UI" unique_id=493585219]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Backdrop" type="ColorRect" parent="UI/SpiralScopeModal" unique_id=119530788]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.75)
+
+[node name="Card" type="PanelContainer" parent="UI/SpiralScopeModal" unique_id=900495928]
+custom_minimum_size = Vector2(640, 320)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -160.0
+offset_right = 320.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_modal_card")
+
+[node name="HBox" type="HBoxContainer" parent="UI/SpiralScopeModal/Card" unique_id=1676842028]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="ScopeLens" type="Control" parent="UI/SpiralScopeModal/Card/HBox" unique_id=827011759]
+custom_minimum_size = Vector2(240, 240)
+layout_mode = 2
+script = ExtResource("8_lens")
+
+[node name="Info" type="VBoxContainer" parent="UI/SpiralScopeModal/Card/HBox" unique_id=660553911]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Title" type="Label" parent="UI/SpiralScopeModal/Card/HBox/Info" unique_id=1188930834]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
+theme_override_font_sizes/font_size = 18
+text = "SPIRAL SCOPE"
+
+[node name="Subtitle" type="Label" parent="UI/SpiralScopeModal/Card/HBox/Info" unique_id=580333568]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.85, 1, 1)
+theme_override_font_sizes/font_size = 12
+text = "ANOMALY ANALYSIS SCANNER"
+
+[node name="HSeparator" type="HSeparator" parent="UI/SpiralScopeModal/Card/HBox/Info" unique_id=1389807597]
+layout_mode = 2
+
+[node name="TargetLabel" type="Label" parent="UI/SpiralScopeModal/Card/HBox/Info" unique_id=1202581328]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Target: Common Anomaly (Toxic Slime)"
+
+[node name="TierLabel" type="Label" parent="UI/SpiralScopeModal/Card/HBox/Info" unique_id=1194730198]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Threat Level: Common"
+
+[node name="WeaknessLabel" type="Label" parent="UI/SpiralScopeModal/Card/HBox/Info" unique_id=1047816762]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.4, 1)
+theme_override_font_sizes/font_size = 13
+text = "Viexir Vulnerability: Attack Viexir"
+
+[node name="WeakPointPanel" type="PanelContainer" parent="UI/SpiralScopeModal/Card/HBox/Info" unique_id=269925682]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_weakpoint_panel")
+
+[node name="WeakPointLabel" type="Label" parent="UI/SpiralScopeModal/Card/HBox/Info/WeakPointPanel" unique_id=1272352215]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.3, 1)
+theme_override_font_sizes/font_size = 13
+text = "🎯 WEAK POINT: HEAD
+(Target Head for CRITICAL HIT +50% Damage!)"
+horizontal_alignment = 1
+
+[node name="NoteLabel" type="Label" parent="UI/SpiralScopeModal/Card/HBox/Info" unique_id=945782921]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.65, 0.7, 1)
+theme_override_font_sizes/font_size = 10
+text = "*Weak point is randomized between Head, Arms, & Body for all tiers."
+
+[node name="BtnCloseScope" type="Button" parent="UI/SpiralScopeModal/Card/HBox/Info" unique_id=1326140686]
+custom_minimum_size = Vector2(100, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "CLOSE [ESC]"
+
+[node name="EscapeModal" type="Control" parent="UI" unique_id=551387153]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Backdrop" type="ColorRect" parent="UI/EscapeModal" unique_id=1564195325]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.75)
+
+[node name="Card" type="PanelContainer" parent="UI/EscapeModal" unique_id=2110873015]
+custom_minimum_size = Vector2(380, 180)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_top = -90.0
+offset_right = 190.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_modal_card")
+
+[node name="VBox" type="VBoxContainer" parent="UI/EscapeModal/Card" unique_id=817475876]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Title" type="Label" parent="UI/EscapeModal/Card/VBox" unique_id=291617288]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.35, 0.35, 1)
+theme_override_font_sizes/font_size = 16
+text = "FLEE FROM BATTLE?"
+horizontal_alignment = 1
+
+[node name="Desc" type="Label" parent="UI/EscapeModal/Card/VBox" unique_id=932221866]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "You will retreat back to the exploration map. Are you sure you want to flee?"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HBoxButtons" type="HBoxContainer" parent="UI/EscapeModal/Card" unique_id=760762431]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="BtnConfirmEscape" type="Button" parent="UI/EscapeModal/Card/HBoxButtons" unique_id=833405364]
+custom_minimum_size = Vector2(110, 34)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_flee")
+text = "YES, FLEE"
+
+[node name="BtnCancelEscape" type="Button" parent="UI/EscapeModal/Card/HBoxButtons" unique_id=402140423]
+custom_minimum_size = Vector2(110, 34)
+layout_mode = 2
+text = "CANCEL"
+
+[node name="PauseModal" type="Control" parent="UI" unique_id=1104608357]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Backdrop" type="ColorRect" parent="UI/PauseModal" unique_id=1581091354]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.75)
+
+[node name="Card" type="PanelContainer" parent="UI/PauseModal" unique_id=1065589347]
+custom_minimum_size = Vector2(320, 220)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -110.0
+offset_right = 160.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_modal_card")
+
+[node name="VBox" type="VBoxContainer" parent="UI/PauseModal/Card" unique_id=432410685]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Title" type="Label" parent="UI/PauseModal/Card/VBox" unique_id=668641985]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
+theme_override_font_sizes/font_size = 18
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="BtnResume" type="Button" parent="UI/PauseModal/Card/VBox" unique_id=1362161214]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+text = "Resume Battle"
+
+[node name="BtnToBasecamp" type="Button" parent="UI/PauseModal/Card/VBox" unique_id=303182750]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+text = "Return to Basecamp"
+
+[node name="BtnToMenu" type="Button" parent="UI/PauseModal/Card/VBox" unique_id=758445372]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+text = "Quit to Main Menu"
+
+[node name="GameOverScreen" type="CanvasLayer" parent="." unique_id=1540332107]
+visible = false
+script = ExtResource("9_gameover")
+
+[node name="ColorRect" type="ColorRect" parent="GameOverScreen" unique_id=1028480826]
+offset_right = 1150.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="GameOverScreen" unique_id=1905914062]
+offset_left = 436.0
+offset_top = 195.0
+offset_right = 722.0
+offset_bottom = 264.0
+theme_override_font_sizes/font_size = 46
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="BtnRetry" type="Button" parent="GameOverScreen" unique_id=408337170]
+offset_left = 535.0
+offset_top = 292.0
+offset_right = 618.0
+offset_bottom = 323.0
+text = "Retry"
+
+[node name="BtnBase" type="Button" parent="GameOverScreen" unique_id=2135181058]
+offset_left = 510.0
+offset_top = 329.0
+offset_right = 645.0
+offset_bottom = 360.0
+text = "Return to Basecamp"
+
+[node name="VictoryScreen" type="CanvasLayer" parent="." unique_id=2145953853]
+visible = false
+script = ExtResource("10_victory")
+
+[node name="ColorRect" type="ColorRect" parent="VictoryScreen" unique_id=790382793]
+offset_right = 1150.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="VictoryScreen" unique_id=1598119014]
+offset_left = 275.0
+offset_top = 191.0
+offset_right = 890.0
+offset_bottom = 260.0
+theme_override_font_sizes/font_size = 36
+text = "ANOMALY DEFEATED!"
+horizontal_alignment = 1
+
+[node name="BtnBase" type="Button" parent="VictoryScreen" unique_id=207885853]
+offset_left = 510.0
+offset_top = 329.0
+offset_right = 645.0
+offset_bottom = 360.0
+text = "Return to Basecamp"
+
+[connection signal="body_entered" from="DeathZone" to="DeathZone" method="_on_body_entered"]

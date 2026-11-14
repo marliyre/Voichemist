@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://p37a4fd4rxy6"]
+
+[ext_resource type="Script" uid="uid://cqe1yt8l4qlmf" path="res://scenes/objects/enemy_viexir.gd" id="1_0cuy5"]
+[ext_resource type="Texture2D" uid="uid://cabfhib8ibhv" path="res://assets/sprites/exploration/Icon Anomali Biasa.png" id="2_2rfi0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e58uu"]
+radius = 29.999996
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bsy4x"]
+radius = 0.4054553
+
+[node name="BotolMusuh" type="RigidBody2D" unique_id=40130579]
+scale = Vector2(0.2, 0.2)
+collision_layer = 8
+collision_mask = 3
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_0cuy5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1814695952]
+shape = SubResource("CircleShape2D_e58uu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1813216638]
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("2_2rfi0")
+
+[node name="AreaLedakan" type="Area2D" parent="." unique_id=1157836059]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaLedakan" unique_id=922221235]
+scale = Vector2(73.99089, 73.99089)
+shape = SubResource("CircleShape2D_bsy4x")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

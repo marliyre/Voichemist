@@ -1,0 +1,1630 @@
+[gd_scene format=3 uid="uid://gpl8s22ckix0"]
+
+[ext_resource type="Script" uid="uid://symhi5voe4o4" path="res://scenes/levels/base_lobby.gd" id="1_lobby"]
+[ext_resource type="Texture2D" path="res://assets/referensi/basecamp/contoh.png" id="2_bg"]
+[ext_resource type="Texture2D" path="res://assets/referensi/basecamp/contoh workshop.png" id="3_wb"]
+[ext_resource type="Texture2D" path="res://assets/referensi/basecamp/contoh shop.png" id="4_shop"]
+[ext_resource type="Texture2D" path="res://assets/referensi/basecamp/contoh inventory.png" id="5_inv"]
+[ext_resource type="Texture2D" path="res://assets/referensi/basecamp/contoh chest.png" id="6_chest"]
+[ext_resource type="Texture2D" path="res://assets/referensi/basecamp/contoh quest.png" id="7_quest"]
+[ext_resource type="Texture2D" path="res://assets/referensi/basecamp/contoh guide book.png" id="8_guide"]
+[ext_resource type="Texture2D" path="res://assets/referensi/basecamp/contoh pause.png" id="9_pause"]
+[ext_resource type="Script" path="res://scenes/levels/modals/workbench_modal.gd" id="10_wb_scr"]
+[ext_resource type="Script" path="res://scenes/levels/modals/brewing_modal.gd" id="11_brew_scr"]
+[ext_resource type="Script" path="res://scenes/levels/modals/shop_modal.gd" id="12_shop_scr"]
+[ext_resource type="Script" path="res://scenes/levels/modals/inventory_modal.gd" id="13_inv_scr"]
+[ext_resource type="Script" path="res://scenes/levels/modals/chest_modal.gd" id="14_chest_scr"]
+[ext_resource type="Script" path="res://scenes/levels/modals/quest_modal.gd" id="15_quest_scr"]
+[ext_resource type="Script" path="res://scenes/levels/modals/guide_book_modal.gd" id="16_guide_scr"]
+[ext_resource type="Script" path="res://scenes/levels/modals/pause_modal.gd" id="17_pause_scr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_normal"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hotspot_hover"]
+bg_color = Color(1, 0.85, 0.3, 0.12)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.85, 0.3, 0.8)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tooltip"]
+bg_color = Color(0.08, 0.09, 0.12, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85, 0.7, 0.25, 0.9)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hud_card"]
+bg_color = Color(0.08, 0.09, 0.12, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.7, 0.55, 0.25, 0.85)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bar_bg"]
+bg_color = Color(0.05, 0.05, 0.07, 0.85)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.35, 0.35, 0.4, 0.6)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hp_fill"]
+bg_color = Color(0.82, 0.15, 0.15, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sp_fill"]
+bg_color = Color(0.12, 0.52, 0.95, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_exp_fill"]
+bg_color = Color(0.85, 0.65, 0.15, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_rest"]
+bg_color = Color(0.15, 0.35, 0.2, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.9, 0.4, 0.85)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_slot"]
+bg_color = Color(0.18, 0.14, 0.1, 0.85)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.65, 0.5, 0.25, 0.8)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_modal_dark"]
+bg_color = Color(0.09, 0.1, 0.14, 0.96)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.75, 0.6, 0.25, 0.9)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+shadow_size = 12
+
+[node name="BaseLobby" type="Node2D" unique_id=1057511942]
+script = ExtResource("1_lobby")
+
+[node name="Background" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(1152, 648)
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1565085793]
+
+[node name="Hotspots" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HotspotCave" type="Button" parent="UI/Hotspots"]
+layout_mode = 0
+offset_left = 290.0
+offset_top = 190.0
+offset_right = 420.0
+offset_bottom = 370.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hotspot_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hotspot_hover")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_normal")
+flat = true
+
+[node name="HotspotCauldron" type="Button" parent="UI/Hotspots"]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 390.0
+offset_right = 290.0
+offset_bottom = 550.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hotspot_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hotspot_hover")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_normal")
+flat = true
+
+[node name="HotspotDoor" type="Button" parent="UI/Hotspots"]
+layout_mode = 0
+offset_left = 550.0
+offset_top = 60.0
+offset_right = 640.0
+offset_bottom = 200.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hotspot_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hotspot_hover")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_normal")
+flat = true
+
+[node name="HotspotWorkbench" type="Button" parent="UI/Hotspots"]
+layout_mode = 0
+offset_left = 820.0
+offset_top = 70.0
+offset_right = 1100.0
+offset_bottom = 200.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hotspot_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hotspot_hover")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_normal")
+flat = true
+
+[node name="HotspotChest" type="Button" parent="UI/Hotspots"]
+layout_mode = 0
+offset_left = 680.0
+offset_top = 330.0
+offset_right = 830.0
+offset_bottom = 430.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hotspot_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hotspot_hover")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_normal")
+flat = true
+
+[node name="HotspotTarget" type="Button" parent="UI/Hotspots"]
+layout_mode = 0
+offset_left = 640.0
+offset_top = 490.0
+offset_right = 770.0
+offset_bottom = 620.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hotspot_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hotspot_hover")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_normal")
+flat = true
+
+[node name="HotspotBook" type="Button" parent="UI/Hotspots"]
+layout_mode = 0
+offset_left = 815.0
+offset_top = 500.0
+offset_right = 945.0
+offset_bottom = 610.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hotspot_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hotspot_hover")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_normal")
+flat = true
+
+[node name="HotspotBag" type="Button" parent="UI/Hotspots"]
+layout_mode = 0
+offset_left = 975.0
+offset_top = 495.0
+offset_right = 1105.0
+offset_bottom = 615.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hotspot_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hotspot_hover")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_normal")
+flat = true
+
+[node name="FloatingTooltip" type="PanelContainer" parent="UI"]
+visible = false
+z_index = 50
+layout_mode = 0
+offset_right = 180.0
+offset_bottom = 32.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tooltip")
+
+[node name="Label" type="Label" parent="UI/FloatingTooltip"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.4, 1)
+theme_override_font_sizes/font_size = 12
+text = "Tooltip"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TopHUD" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 80.0
+grow_horizontal = 2
+
+[node name="PlayerProfileCard" type="PanelContainer" parent="UI/TopHUD"]
+custom_minimum_size = Vector2(320, 72)
+layout_mode = 0
+offset_left = 18.0
+offset_top = 14.0
+offset_right = 348.0
+offset_bottom = 86.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hud_card")
+
+[node name="HBox" type="HBoxContainer" parent="UI/TopHUD/PlayerProfileCard"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="AvatarFrame" type="ColorRect" parent="UI/TopHUD/PlayerProfileCard/HBox"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_vertical = 4
+color = Color(0.2, 0.18, 0.28, 1)
+
+[node name="Label" type="Label" parent="UI/TopHUD/PlayerProfileCard/HBox/AvatarFrame"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "🧙"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBox" type="VBoxContainer" parent="UI/TopHUD/PlayerProfileCard/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="HeaderRow" type="HBoxContainer" parent="UI/TopHUD/PlayerProfileCard/HBox/VBox"]
+layout_mode = 2
+
+[node name="PlayerNameLabel" type="Label" parent="UI/TopHUD/PlayerProfileCard/HBox/VBox/HeaderRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.95, 0.95, 1, 1)
+theme_override_font_sizes/font_size = 12
+text = "PLAYER (Lv. 1)"
+
+[node name="CoinsLabel" type="Label" parent="UI/TopHUD/PlayerProfileCard/HBox/VBox/HeaderRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.25, 1)
+theme_override_font_sizes/font_size = 12
+text = "💰 0 Coins"
+
+[node name="HPBar" type="ProgressBar" parent="UI/TopHUD/PlayerProfileCard/HBox/VBox"]
+custom_minimum_size = Vector2(0, 14)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_bar_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hp_fill")
+value = 100.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="UI/TopHUD/PlayerProfileCard/HBox/VBox/HPBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 9
+text = "100 / 100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SPBar" type="ProgressBar" parent="UI/TopHUD/PlayerProfileCard/HBox/VBox"]
+custom_minimum_size = Vector2(0, 14)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_bar_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_sp_fill")
+value = 50.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="UI/TopHUD/PlayerProfileCard/HBox/VBox/SPBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 9
+text = "50 / 100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EXPBar" type="ProgressBar" parent="UI/TopHUD/PlayerProfileCard/HBox/VBox"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_bar_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_exp_fill")
+value = 0.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="UI/TopHUD/PlayerProfileCard/HBox/VBox/EXPBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 8
+text = "0 / 100 EXP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BtnRest" type="Button" parent="UI/TopHUD"]
+custom_minimum_size = Vector2(130, 36)
+layout_mode = 0
+offset_left = 360.0
+offset_top = 22.0
+offset_right = 490.0
+offset_bottom = 58.0
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_rest")
+text = "🛌 REST"
+
+[node name="BtnPause" type="Button" parent="UI/TopHUD"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -60.0
+offset_top = 18.0
+offset_right = -16.0
+offset_bottom = 62.0
+grow_horizontal = 0
+text = "⏸️"
+
+[node name="Modals" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="WorkbenchModal" type="Control" parent="UI/Modals"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("10_wb_scr")
+
+[node name="Backdrop" type="ColorRect" parent="UI/Modals/WorkbenchModal"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.75)
+
+[node name="Card" type="TextureRect" parent="UI/Modals/WorkbenchModal"]
+custom_minimum_size = Vector2(1000, 562)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -281.0
+offset_right = 500.0
+offset_bottom = 281.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_wb")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BahanSlots" type="GridContainer" parent="UI/Modals/WorkbenchModal/Card"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 175.0
+offset_right = 265.0
+offset_bottom = 335.0
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+columns = 2
+
+[node name="Slot1" type="Panel" parent="UI/Modals/WorkbenchModal/Card/BahanSlots"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="Label" type="Label" parent="UI/Modals/WorkbenchModal/Card/BahanSlots/Slot1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 9
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot2" type="Panel" parent="UI/Modals/WorkbenchModal/Card/BahanSlots"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="Label" type="Label" parent="UI/Modals/WorkbenchModal/Card/BahanSlots/Slot2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 9
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot3" type="Panel" parent="UI/Modals/WorkbenchModal/Card/BahanSlots"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="Label" type="Label" parent="UI/Modals/WorkbenchModal/Card/BahanSlots/Slot3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 9
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slot4" type="Panel" parent="UI/Modals/WorkbenchModal/Card/BahanSlots"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="Label" type="Label" parent="UI/Modals/WorkbenchModal/Card/BahanSlots/Slot4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 9
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HasilSlot" type="Panel" parent="UI/Modals/WorkbenchModal/Card"]
+custom_minimum_size = Vector2(110, 110)
+layout_mode = 0
+offset_left = 745.0
+offset_top = 185.0
+offset_right = 855.0
+offset_bottom = 295.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="Label" type="Label" parent="UI/Modals/WorkbenchModal/Card/HasilSlot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.4, 1)
+theme_override_font_sizes/font_size = 12
+text = "Viex Container\n(x1)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BtnBuat" type="Button" parent="UI/Modals/WorkbenchModal/Card"]
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 0
+offset_left = 415.0
+offset_top = 345.0
+offset_right = 575.0
+offset_bottom = 385.0
+text = "CRAFT"
+
+[node name="RecipeSelectors" type="HBoxContainer" parent="UI/Modals/WorkbenchModal/Card"]
+layout_mode = 0
+offset_left = 335.0
+offset_top = 420.0
+offset_right = 655.0
+offset_bottom = 464.0
+theme_override_constants/separation = 16
+
+[node name="BtnViex" type="Button" parent="UI/Modals/WorkbenchModal/Card/RecipeSelectors"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Viex Container"
+
+[node name="BtnScope" type="Button" parent="UI/Modals/WorkbenchModal/Card/RecipeSelectors"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Scope Container"
+
+[node name="NoticeLabel" type="Label" parent="UI/Modals/WorkbenchModal/Card"]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 390.0
+offset_right = 750.0
+offset_bottom = 415.0
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 1
+
+[node name="BtnKembali" type="Button" parent="UI/Modals/WorkbenchModal/Card"]
+custom_minimum_size = Vector2(160, 38)
+layout_mode = 0
+offset_left = 730.0
+offset_top = 435.0
+offset_right = 890.0
+offset_bottom = 473.0
+text = "BACK"
+
+[node name="BrewingModal" type="Control" parent="UI/Modals"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("11_brew_scr")
+
+[node name="Backdrop" type="ColorRect" parent="UI/Modals/BrewingModal"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.75)
+
+[node name="Card" type="PanelContainer" parent="UI/Modals/BrewingModal"]
+custom_minimum_size = Vector2(780, 520)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -390.0
+offset_top = -260.0
+offset_right = 390.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_modal_dark")
+
+[node name="VBox" type="VBoxContainer" parent="UI/Modals/BrewingModal/Card"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="UI/Modals/BrewingModal/Card/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 1, 0.6, 1)
+theme_override_font_sizes/font_size = 18
+text = "🧪 ALCHEMY LAB - BREWING (CAULDRON)"
+horizontal_alignment = 1
+
+[node name="Desc" type="Label" parent="UI/Modals/BrewingModal/Card/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.75, 1)
+theme_override_font_sizes/font_size = 11
+text = "Fill Viex/Scope containers with crystals and brew potions from Azer leaves."
+horizontal_alignment = 1
+
+[node name="NoticeLabel" type="Label" parent="UI/Modals/BrewingModal/Card/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+
+[node name="Scroll" type="ScrollContainer" parent="UI/Modals/BrewingModal/Card/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBox" type="VBoxContainer" parent="UI/Modals/BrewingModal/Card/VBox/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="BtnKembali" type="Button" parent="UI/Modals/BrewingModal/Card/VBox"]
+custom_minimum_size = Vector2(140, 36)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "CLOSE [ESC]"
+
+[node name="ShopModal" type="Control" parent="UI/Modals"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("12_shop_scr")
+
+[node name="Backdrop" type="ColorRect" parent="UI/Modals/ShopModal"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.75)
+
+[node name="Card" type="TextureRect" parent="UI/Modals/ShopModal"]
+custom_minimum_size = Vector2(1000, 562)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -281.0
+offset_right = 500.0
+offset_bottom = 281.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_shop")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Header" type="Control" parent="UI/Modals/ShopModal/Card"]
+anchors_preset = 0
+offset_right = 1000.0
+offset_bottom = 150.0
+
+[node name="TitleLabel" type="Label" parent="UI/Modals/ShopModal/Card/Header"]
+layout_mode = 0
+offset_left = 770.0
+offset_top = 135.0
+offset_right = 880.0
+offset_bottom = 165.0
+theme_override_colors/font_color = Color(1, 0.9, 0.4, 1)
+theme_override_font_sizes/font_size = 18
+text = "SHOP"
+horizontal_alignment = 2
+
+[node name="ItemCard" type="Control" parent="UI/Modals/ShopModal/Card"]
+anchors_preset = 0
+offset_left = 130.0
+offset_top = 185.0
+offset_right = 870.0
+offset_bottom = 350.0
+
+[node name="BtnPrev" type="Button" parent="UI/Modals/ShopModal/Card/ItemCard"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 65.0
+offset_right = 45.0
+offset_bottom = 105.0
+text = "◀"
+
+[node name="BtnNext" type="Button" parent="UI/Modals/ShopModal/Card/ItemCard"]
+layout_mode = 0
+offset_left = 695.0
+offset_top = 65.0
+offset_right = 730.0
+offset_bottom = 105.0
+text = "▶"
+
+[node name="Left" type="Control" parent="UI/Modals/ShopModal/Card/ItemCard"]
+anchors_preset = 0
+offset_left = 55.0
+offset_top = 10.0
+offset_right = 185.0
+offset_bottom = 150.0
+
+[node name="IconLabel" type="Label" parent="UI/Modals/ShopModal/Card/ItemCard/Left"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 110.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 46
+text = "💥"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OwnedBadge" type="Panel" parent="UI/Modals/ShopModal/Card/ItemCard/Left"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 105.0
+offset_right = 100.0
+offset_bottom = 130.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_slot")
+
+[node name="CountLabel" type="Label" parent="UI/Modals/ShopModal/Card/ItemCard/Left/OwnedBadge"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 11
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Center" type="VBoxContainer" parent="UI/Modals/ShopModal/Card/ItemCard"]
+layout_mode = 0
+offset_left = 185.0
+offset_top = 20.0
+offset_right = 680.0
+offset_bottom = 145.0
+
+[node name="NameLabel" type="Label" parent="UI/Modals/ShopModal/Card/ItemCard/Center"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.7, 1)
+theme_override_font_sizes/font_size = 16
+text = "Attack Viexir"
+
+[node name="DescLabel" type="Label" parent="UI/Modals/ShopModal/Card/ItemCard/Center"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.85, 1)
+theme_override_font_sizes/font_size = 11
+text = "Volatile chemical projectile dealing direct damage."
+autowrap_mode = 2
+
+[node name="ActionRow" type="HBoxContainer" parent="UI/Modals/ShopModal/Card"]
+layout_mode = 0
+offset_left = 315.0
+offset_top = 360.0
+offset_right = 835.0
+offset_bottom = 405.0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="PriceLabel" type="Label" parent="UI/Modals/ShopModal/Card/ActionRow"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.25, 1)
+theme_override_font_sizes/font_size = 14
+text = "💰 15 Coins"
+vertical_alignment = 1
+
+[node name="QuantitySelector" type="HBoxContainer" parent="UI/Modals/ShopModal/Card/ActionRow"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="BtnMinus" type="Button" parent="UI/Modals/ShopModal/Card/ActionRow/QuantitySelector"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "◀"
+
+[node name="LabelQty" type="Label" parent="UI/Modals/ShopModal/Card/ActionRow/QuantitySelector"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BtnPlus" type="Button" parent="UI/Modals/ShopModal/Card/ActionRow/QuantitySelector"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "▶"
+
+[node name="BtnAction" type="Button" parent="UI/Modals/ShopModal/Card/ActionRow"]
+custom_minimum_size = Vector2(130, 42)
+layout_mode = 2
+text = "BUY"
+
+[node name="BottomRow" type="HBoxContainer" parent="UI/Modals/ShopModal/Card"]
+layout_mode = 0
+offset_left = 540.0
+offset_top = 465.0
+offset_right = 850.0
+offset_bottom = 505.0
+theme_override_constants/separation = 16
+
+[node name="BtnToggleMode" type="Button" parent="UI/Modals/ShopModal/Card/BottomRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "GO SELL"
+
+[node name="BtnKembali" type="Button" parent="UI/Modals/ShopModal/Card/BottomRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "BACK"
+
+[node name="NoticeLabel" type="Label" parent="UI/Modals/ShopModal/Card"]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 425.0
+offset_right = 750.0
+offset_bottom = 450.0
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 1
+
+[node name="InventoryModal" type="Control" parent="UI/Modals"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("13_inv_scr")
+
+[node name="Backdrop" type="ColorRect" parent="UI/Modals/InventoryModal"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.75)
+
+[node name="Card" type="TextureRect" parent="UI/Modals/InventoryModal"]
+custom_minimum_size = Vector2(1000, 562)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -281.0
+offset_right = 500.0
+offset_bottom = 281.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_inv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TasBox" type="Control" parent="UI/Modals/InventoryModal/Card"]
+anchors_preset = 0
+offset_left = 580.0
+offset_top = 220.0
+offset_right = 820.0
+offset_bottom = 365.0
+
+[node name="GridSlots" type="GridContainer" parent="UI/Modals/InventoryModal/Card/TasBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+columns = 5
+
+[node name="S1" type="Button" parent="UI/Modals/InventoryModal/Card/TasBox/GridSlots"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+
+[node name="S2" type="Button" parent="UI/Modals/InventoryModal/Card/TasBox/GridSlots"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+
+[node name="S3" type="Button" parent="UI/Modals/InventoryModal/Card/TasBox/GridSlots"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+
+[node name="S4" type="Button" parent="UI/Modals/InventoryModal/Card/TasBox/GridSlots"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+
+[node name="S5" type="Button" parent="UI/Modals/InventoryModal/Card/TasBox/GridSlots"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+
+[node name="S6" type="Button" parent="UI/Modals/InventoryModal/Card/TasBox/GridSlots"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+
+[node name="S7" type="Button" parent="UI/Modals/InventoryModal/Card/TasBox/GridSlots"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+
+[node name="S8" type="Button" parent="UI/Modals/InventoryModal/Card/TasBox/GridSlots"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+
+[node name="S9" type="Button" parent="UI/Modals/InventoryModal/Card/TasBox/GridSlots"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+
+[node name="S10" type="Button" parent="UI/Modals/InventoryModal/Card/TasBox/GridSlots"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+
+[node name="S11" type="Button" parent="UI/Modals/InventoryModal/Card/TasBox/GridSlots"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+
+[node name="S12" type="Button" parent="UI/Modals/InventoryModal/Card/TasBox/GridSlots"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+
+[node name="S13" type="Button" parent="UI/Modals/InventoryModal/Card/TasBox/GridSlots"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+
+[node name="S14" type="Button" parent="UI/Modals/InventoryModal/Card/TasBox/GridSlots"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+
+[node name="S15" type="Button" parent="UI/Modals/InventoryModal/Card/TasBox/GridSlots"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+
+[node name="DescBanner" type="Control" parent="UI/Modals/InventoryModal/Card"]
+anchors_preset = 0
+offset_left = 80.0
+offset_top = 425.0
+offset_right = 500.0
+offset_bottom = 485.0
+
+[node name="Label" type="Label" parent="UI/Modals/InventoryModal/Card/DescBanner"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.2, 0.15, 0.1, 1)
+theme_override_font_sizes/font_size = 11
+text = "Select an item in your bag to inspect its details."
+autowrap_mode = 2
+
+[node name="ActionButtons" type="HBoxContainer" parent="UI/Modals/InventoryModal/Card"]
+layout_mode = 0
+offset_left = 530.0
+offset_top = 460.0
+offset_right = 875.0
+offset_bottom = 502.0
+theme_override_constants/separation = 16
+
+[node name="BtnBuang" type="Button" parent="UI/Modals/InventoryModal/Card/ActionButtons"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "DISCARD"
+
+[node name="BtnSimpanTutup" type="Button" parent="UI/Modals/InventoryModal/Card/ActionButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SAVE & CLOSE"
+
+[node name="ChestModal" type="Control" parent="UI/Modals"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("14_chest_scr")
+
+[node name="Backdrop" type="ColorRect" parent="UI/Modals/ChestModal"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.75)
+
+[node name="Card" type="TextureRect" parent="UI/Modals/ChestModal"]
+custom_minimum_size = Vector2(1000, 562)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -281.0
+offset_right = 500.0
+offset_bottom = 281.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_chest")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PetiBox" type="Control" parent="UI/Modals/ChestModal/Card"]
+anchors_preset = 0
+offset_left = 85.0
+offset_top = 175.0
+offset_right = 310.0
+offset_bottom = 455.0
+
+[node name="PetiGrid" type="GridContainer" parent="UI/Modals/ChestModal/Card/PetiBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+columns = 5
+
+[node name="P1" type="Button" parent="UI/Modals/ChestModal/Card/PetiBox/PetiGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="P2" type="Button" parent="UI/Modals/ChestModal/Card/PetiBox/PetiGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="P3" type="Button" parent="UI/Modals/ChestModal/Card/PetiBox/PetiGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="P4" type="Button" parent="UI/Modals/ChestModal/Card/PetiBox/PetiGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="P5" type="Button" parent="UI/Modals/ChestModal/Card/PetiBox/PetiGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="P6" type="Button" parent="UI/Modals/ChestModal/Card/PetiBox/PetiGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="P7" type="Button" parent="UI/Modals/ChestModal/Card/PetiBox/PetiGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="P8" type="Button" parent="UI/Modals/ChestModal/Card/PetiBox/PetiGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="P9" type="Button" parent="UI/Modals/ChestModal/Card/PetiBox/PetiGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="P10" type="Button" parent="UI/Modals/ChestModal/Card/PetiBox/PetiGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="P11" type="Button" parent="UI/Modals/ChestModal/Card/PetiBox/PetiGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="P12" type="Button" parent="UI/Modals/ChestModal/Card/PetiBox/PetiGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="P13" type="Button" parent="UI/Modals/ChestModal/Card/PetiBox/PetiGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="P14" type="Button" parent="UI/Modals/ChestModal/Card/PetiBox/PetiGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="P15" type="Button" parent="UI/Modals/ChestModal/Card/PetiBox/PetiGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="P16" type="Button" parent="UI/Modals/ChestModal/Card/PetiBox/PetiGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="P17" type="Button" parent="UI/Modals/ChestModal/Card/PetiBox/PetiGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="P18" type="Button" parent="UI/Modals/ChestModal/Card/PetiBox/PetiGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="P19" type="Button" parent="UI/Modals/ChestModal/Card/PetiBox/PetiGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="P20" type="Button" parent="UI/Modals/ChestModal/Card/PetiBox/PetiGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="P21" type="Button" parent="UI/Modals/ChestModal/Card/PetiBox/PetiGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="P22" type="Button" parent="UI/Modals/ChestModal/Card/PetiBox/PetiGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="P23" type="Button" parent="UI/Modals/ChestModal/Card/PetiBox/PetiGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="P24" type="Button" parent="UI/Modals/ChestModal/Card/PetiBox/PetiGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="P25" type="Button" parent="UI/Modals/ChestModal/Card/PetiBox/PetiGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="P26" type="Button" parent="UI/Modals/ChestModal/Card/PetiBox/PetiGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="P27" type="Button" parent="UI/Modals/ChestModal/Card/PetiBox/PetiGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="P28" type="Button" parent="UI/Modals/ChestModal/Card/PetiBox/PetiGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="P29" type="Button" parent="UI/Modals/ChestModal/Card/PetiBox/PetiGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="P30" type="Button" parent="UI/Modals/ChestModal/Card/PetiBox/PetiGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="TasBox" type="Control" parent="UI/Modals/ChestModal/Card"]
+anchors_preset = 0
+offset_left = 685.0
+offset_top = 175.0
+offset_right = 910.0
+offset_bottom = 315.0
+
+[node name="TasGrid" type="GridContainer" parent="UI/Modals/ChestModal/Card/TasBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+columns = 5
+
+[node name="T1" type="Button" parent="UI/Modals/ChestModal/Card/TasBox/TasGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="T2" type="Button" parent="UI/Modals/ChestModal/Card/TasBox/TasGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="T3" type="Button" parent="UI/Modals/ChestModal/Card/TasBox/TasGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="T4" type="Button" parent="UI/Modals/ChestModal/Card/TasBox/TasGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="T5" type="Button" parent="UI/Modals/ChestModal/Card/TasBox/TasGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="T6" type="Button" parent="UI/Modals/ChestModal/Card/TasBox/TasGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="T7" type="Button" parent="UI/Modals/ChestModal/Card/TasBox/TasGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="T8" type="Button" parent="UI/Modals/ChestModal/Card/TasBox/TasGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="T9" type="Button" parent="UI/Modals/ChestModal/Card/TasBox/TasGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="T10" type="Button" parent="UI/Modals/ChestModal/Card/TasBox/TasGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="T11" type="Button" parent="UI/Modals/ChestModal/Card/TasBox/TasGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="T12" type="Button" parent="UI/Modals/ChestModal/Card/TasBox/TasGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="T13" type="Button" parent="UI/Modals/ChestModal/Card/TasBox/TasGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="T14" type="Button" parent="UI/Modals/ChestModal/Card/TasBox/TasGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="T15" type="Button" parent="UI/Modals/ChestModal/Card/TasBox/TasGrid"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+
+[node name="BtnSimpanTutup" type="Button" parent="UI/Modals/ChestModal/Card"]
+custom_minimum_size = Vector2(210, 42)
+layout_mode = 0
+offset_left = 690.0
+offset_top = 465.0
+offset_right = 900.0
+offset_bottom = 507.0
+text = "SAVE & CLOSE"
+
+[node name="QuestModal" type="Control" parent="UI/Modals"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("15_quest_scr")
+
+[node name="Backdrop" type="ColorRect" parent="UI/Modals/QuestModal"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.75)
+
+[node name="Card" type="TextureRect" parent="UI/Modals/QuestModal"]
+custom_minimum_size = Vector2(580, 580)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -290.0
+offset_top = -290.0
+offset_right = 290.0
+offset_bottom = 290.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_quest")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Scroll" type="Control" parent="UI/Modals/QuestModal/Card"]
+anchors_preset = 0
+offset_left = 135.0
+offset_top = 175.0
+offset_right = 445.0
+offset_bottom = 430.0
+
+[node name="VBox" type="VBoxContainer" parent="UI/Modals/QuestModal/Card/Scroll"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 6
+
+[node name="HeaderCari" type="Label" parent="UI/Modals/QuestModal/Card/Scroll/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25, 0.18, 0.1, 1)
+theme_override_font_sizes/font_size = 12
+text = "GATHER:"
+
+[node name="CariList" type="Label" parent="UI/Modals/QuestModal/Card/Scroll/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 0.22, 0.15, 1)
+theme_override_font_sizes/font_size = 10
+text = "Stone (0/10)"
+
+[node name="HeaderBunuh" type="Label" parent="UI/Modals/QuestModal/Card/Scroll/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25, 0.18, 0.1, 1)
+theme_override_font_sizes/font_size = 12
+text = "DEFEAT:"
+
+[node name="BunuhList" type="Label" parent="UI/Modals/QuestModal/Card/Scroll/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 0.22, 0.15, 1)
+theme_override_font_sizes/font_size = 10
+text = "Common Anomaly (0/20)"
+
+[node name="BtnClaim" type="Button" parent="UI/Modals/QuestModal/Card"]
+custom_minimum_size = Vector2(260, 32)
+layout_mode = 0
+offset_left = 160.0
+offset_top = 440.0
+offset_right = 420.0
+offset_bottom = 472.0
+theme_override_font_sizes/font_size = 10
+text = "Claim Reward"
+
+[node name="BtnTutup" type="Button" parent="UI/Modals/QuestModal/Card"]
+custom_minimum_size = Vector2(110, 32)
+layout_mode = 0
+offset_left = 235.0
+offset_top = 480.0
+offset_right = 345.0
+offset_bottom = 512.0
+theme_override_font_sizes/font_size = 11
+text = "CLOSE"
+
+[node name="GuideBookModal" type="Control" parent="UI/Modals"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("16_guide_scr")
+
+[node name="Backdrop" type="ColorRect" parent="UI/Modals/GuideBookModal"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.75)
+
+[node name="Card" type="TextureRect" parent="UI/Modals/GuideBookModal"]
+custom_minimum_size = Vector2(860, 484)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -430.0
+offset_top = -242.0
+offset_right = 430.0
+offset_bottom = 242.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_guide")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TabHeader" type="HBoxContainer" parent="UI/Modals/GuideBookModal/Card"]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 125.0
+offset_right = 385.0
+offset_bottom = 160.0
+theme_override_constants/separation = 8
+
+[node name="BtnMarkas" type="Button" parent="UI/Modals/GuideBookModal/Card/TabHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 10
+text = "BASECAMP"
+
+[node name="BtnEksplor" type="Button" parent="UI/Modals/GuideBookModal/Card/TabHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 10
+text = "EXPLORATION"
+
+[node name="BtnBertarung" type="Button" parent="UI/Modals/GuideBookModal/Card/TabHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 10
+text = "COMBAT"
+
+[node name="Content" type="VBoxContainer" parent="UI/Modals/GuideBookModal/Card"]
+layout_mode = 0
+offset_left = 310.0
+offset_top = 210.0
+offset_right = 750.0
+offset_bottom = 390.0
+theme_override_constants/separation = 8
+
+[node name="TitleLabel" type="Label" parent="UI/Modals/GuideBookModal/Card/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.4, 1)
+theme_override_font_sizes/font_size = 14
+text = "Guidebook: Basecamp"
+
+[node name="BodyLabel" type="Label" parent="UI/Modals/GuideBookModal/Card/Content"]
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.85, 0.9, 1)
+theme_override_font_sizes/font_size = 10
+text = "Complete manual regarding the basecamp facilities."
+autowrap_mode = 2
+
+[node name="BtnTutup" type="Button" parent="UI/Modals/GuideBookModal/Card"]
+custom_minimum_size = Vector2(90, 32)
+layout_mode = 0
+offset_left = 680.0
+offset_top = 405.0
+offset_right = 770.0
+offset_bottom = 437.0
+theme_override_font_sizes/font_size = 11
+text = "CLOSE"
+
+[node name="PauseModal" type="Control" parent="UI/Modals"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("17_pause_scr")
+
+[node name="Backdrop" type="ColorRect" parent="UI/Modals/PauseModal"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.75)
+
+[node name="Card" type="TextureRect" parent="UI/Modals/PauseModal"]
+custom_minimum_size = Vector2(460, 460)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -230.0
+offset_top = -230.0
+offset_right = 230.0
+offset_bottom = 230.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_pause")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TitleLabel" type="Label" parent="UI/Modals/PauseModal/Card"]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 100.0
+offset_right = 320.0
+offset_bottom = 135.0
+theme_override_colors/font_color = Color(0.2, 0.15, 0.1, 1)
+theme_override_font_sizes/font_size = 18
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="BtnLanjutkan" type="Button" parent="UI/Modals/PauseModal/Card"]
+custom_minimum_size = Vector2(160, 32)
+layout_mode = 0
+offset_left = 150.0
+offset_top = 155.0
+offset_right = 310.0
+offset_bottom = 187.0
+text = "Resume"
+
+[node name="BtnPengaturan" type="Button" parent="UI/Modals/PauseModal/Card"]
+custom_minimum_size = Vector2(160, 32)
+layout_mode = 0
+offset_left = 150.0
+offset_top = 200.0
+offset_right = 310.0
+offset_bottom = 232.0
+text = "Settings"
+
+[node name="BtnKredit" type="Button" parent="UI/Modals/PauseModal/Card"]
+custom_minimum_size = Vector2(160, 32)
+layout_mode = 0
+offset_left = 150.0
+offset_top = 245.0
+offset_right = 310.0
+offset_bottom = 277.0
+text = "Credits"
+
+[node name="BtnKeluar" type="Button" parent="UI/Modals/PauseModal/Card"]
+custom_minimum_size = Vector2(160, 32)
+layout_mode = 0
+offset_left = 150.0
+offset_top = 290.0
+offset_right = 310.0
+offset_bottom = 322.0
+text = "Quit to Title"
+
+[node name="ToastLabel" type="Label" parent="UI/Modals/PauseModal/Card"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 345.0
+offset_right = 380.0
+offset_bottom = 375.0
+theme_override_colors/font_color = Color(0.25, 0.2, 0.15, 1)
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 1

@@ -1,0 +1,357 @@
+[gd_scene format=3 uid="uid://dmqm74vk0p31x"]
+
+[ext_resource type="Script" path="res://scenes/levels/main_menu.gd" id="1_scr"]
+[ext_resource type="Texture2D" uid="uid://cki5eq26gmawb" path="res://assets/referensi/main menu/contoh.png" id="2_bg"]
+[ext_resource type="Texture2D" uid="uid://bea0fbt1y0s0k" path="res://assets/referensi/basecamp/contoh pause.png" id="3_card_bg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_norm"]
+bg_color = Color(0.13, 0.09, 0.17, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85, 0.68, 0.3, 0.9)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0, 0, 0, 0.6)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_hover"]
+bg_color = Color(0.25, 0.18, 0.32, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.85, 0.38, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(1, 0.8, 0.2, 0.3)
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_pressed"]
+bg_color = Color(0.1, 0.07, 0.12, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.65, 0.5, 0.2, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_kredit"]
+bg_color = Color(0.12, 0.09, 0.14, 0.8)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.7, 0.55, 0.28, 0.7)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_scr")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="VBoxButtons" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(360, 180)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = 88.0
+offset_right = 180.0
+offset_bottom = 268.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 14
+
+[node name="BtnMulai" type="Button" parent="VBoxButtons"]
+custom_minimum_size = Vector2(360, 48)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.92, 0.75, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_norm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+text = "⚔️ START ADVENTURE"
+
+[node name="BtnPengaturan" type="Button" parent="VBoxButtons"]
+custom_minimum_size = Vector2(360, 48)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.85, 0.8, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_norm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+text = "⚙️ SETTINGS"
+
+[node name="BtnKeluar" type="Button" parent="VBoxButtons"]
+custom_minimum_size = Vector2(360, 48)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.8, 0.8, 1)
+theme_override_colors/font_hover_color = Color(1, 0.6, 0.6, 1)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_norm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+text = "🚪 QUIT GAME"
+
+[node name="VersionLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -32.0
+offset_right = 360.0
+offset_bottom = -12.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.7, 0.62, 0.52, 0.85)
+theme_override_font_sizes/font_size = 11
+text = "Voichemist v1.0 • Tactical Alchemist RPG (Godot 4)"
+
+[node name="BtnKredit" type="Button" parent="."]
+custom_minimum_size = Vector2(110, 28)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -134.0
+offset_top = -38.0
+offset_right = -24.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.85, 0.72, 0.45, 1)
+theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_kredit")
+text = "📜 CREDITS"
+
+[node name="Modals" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SettingsModal" type="Control" parent="Modals"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Backdrop" type="ColorRect" parent="Modals/SettingsModal"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.75)
+
+[node name="Card" type="TextureRect" parent="Modals/SettingsModal"]
+custom_minimum_size = Vector2(460, 460)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -230.0
+offset_top = -230.0
+offset_right = 230.0
+offset_bottom = 230.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_card_bg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TitleLabel" type="Label" parent="Modals/SettingsModal/Card"]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 95.0
+offset_right = 320.0
+offset_bottom = 130.0
+theme_override_colors/font_color = Color(0.2, 0.15, 0.1, 1)
+theme_override_font_sizes/font_size = 18
+text = "SETTINGS"
+horizontal_alignment = 1
+
+[node name="VBox" type="VBoxContainer" parent="Modals/SettingsModal/Card"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 145.0
+offset_right = 350.0
+offset_bottom = 310.0
+theme_override_constants/separation = 12
+
+[node name="SFXRow" type="HBoxContainer" parent="Modals/SettingsModal/Card/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Modals/SettingsModal/Card/VBox/SFXRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25, 0.2, 0.15, 1)
+theme_override_font_sizes/font_size = 12
+text = "SFX Volume:"
+
+[node name="SliderSFX" type="HSlider" parent="Modals/SettingsModal/Card/VBox/SFXRow"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 100.0
+
+[node name="LabelVal" type="Label" parent="Modals/SettingsModal/Card/VBox/SFXRow"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25, 0.2, 0.15, 1)
+theme_override_font_sizes/font_size = 12
+text = "100%"
+horizontal_alignment = 2
+
+[node name="BtnMute" type="Button" parent="Modals/SettingsModal/Card/VBox"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "🔊 Sound: ON (100%)"
+
+[node name="BtnFullscreen" type="Button" parent="Modals/SettingsModal/Card/VBox"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "🖥️ Screen Mode: WINDOWED"
+
+[node name="BtnCloseSettings" type="Button" parent="Modals/SettingsModal/Card"]
+custom_minimum_size = Vector2(140, 32)
+layout_mode = 0
+offset_left = 160.0
+offset_top = 325.0
+offset_right = 300.0
+offset_bottom = 357.0
+text = "Close"
+
+[node name="CreditsModal" type="Control" parent="Modals"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Backdrop" type="ColorRect" parent="Modals/CreditsModal"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.75)
+
+[node name="Card" type="TextureRect" parent="Modals/CreditsModal"]
+custom_minimum_size = Vector2(460, 460)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -230.0
+offset_top = -230.0
+offset_right = 230.0
+offset_bottom = 230.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_card_bg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TitleLabel" type="Label" parent="Modals/CreditsModal/Card"]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 95.0
+offset_right = 320.0
+offset_bottom = 130.0
+theme_override_colors/font_color = Color(0.2, 0.15, 0.1, 1)
+theme_override_font_sizes/font_size = 18
+text = "CREDITS"
+horizontal_alignment = 1
+
+[node name="BodyLabel" type="Label" parent="Modals/CreditsModal/Card"]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 145.0
+offset_right = 370.0
+offset_bottom = 305.0
+theme_override_colors/font_color = Color(0.25, 0.2, 0.15, 1)
+theme_override_font_sizes/font_size = 11
+text = "VOICHEMIST
+2D Tactical Turn-Based Artillery Alchemist RPG
+
+Built with:
+• Godot Engine 4 (GL Compatibility / D3D12)
+• Game Design Document (GDD) v3.4
+• Parabolic Projectile Physics & Grid Exploration
+
+Thank you for playing!"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="BtnCloseCredits" type="Button" parent="Modals/CreditsModal/Card"]
+custom_minimum_size = Vector2(140, 32)
+layout_mode = 0
+offset_left = 160.0
+offset_top = 325.0
+offset_right = 300.0
+offset_bottom = 357.0
+text = "Close"
+
+[node name="Fader" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

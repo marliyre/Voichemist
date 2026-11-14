@@ -1,0 +1,378 @@
+[gd_scene format=3 uid="uid://bks7fvkpc1yed"]
+
+[ext_resource type="Script" path="res://scenes/levels/exploration_map.gd" id="1_map_scr"]
+[ext_resource type="Texture2D" uid="uid://bwtxa4hshnldo" path="res://assets/referensi/exploration/contoh exploration.png" id="2_bg_tex"]
+[ext_resource type="PackedScene" uid="uid://dfy17yaxf6m2r" path="res://scenes/characters/player_explorer.tscn" id="3_player"]
+[ext_resource type="PackedScene" uid="uid://ci7k4oaupm12z" path="res://scenes/objects/chest.tscn" id="4_chest"]
+[ext_resource type="PackedScene" uid="uid://d3m8y7v4x2a1b" path="res://scenes/objects/azer_leaf.tscn" id="5_leaf"]
+[ext_resource type="PackedScene" uid="uid://bvyi2oaupm89w" path="res://scenes/objects/enemy_explorer.tscn" id="6_enemy"]
+[ext_resource type="PackedScene" uid="uid://c53k1oaupm74v" path="res://scenes/objects/portal.tscn" id="7_portal"]
+[ext_resource type="Texture2D" uid="uid://bea0fbt1y0s0k" path="res://assets/referensi/basecamp/contoh pause.png" id="8_pause_bg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hud_card"]
+bg_color = Color(0.12, 0.1, 0.16, 0.88)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.7, 0.55, 0.28, 0.9)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0, 0, 0, 0.45)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bar_bg"]
+bg_color = Color(0.08, 0.07, 0.1, 0.9)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3, 0.25, 0.2, 0.8)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hp_fill"]
+bg_color = Color(0.85, 0.18, 0.22, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sp_fill"]
+bg_color = Color(0.2, 0.52, 0.9, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_exp_fill"]
+bg_color = Color(0.9, 0.72, 0.15, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_pause"]
+bg_color = Color(0.18, 0.14, 0.22, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85, 0.7, 0.35, 0.9)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_return"]
+bg_color = Color(0.16, 0.12, 0.18, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.65, 0.3, 0.85)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.5)
+shadow_size = 4
+
+[node name="ExplorationMap" type="Node2D"]
+script = ExtResource("1_map_scr")
+
+[node name="Background" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(1152, 648)
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+texture = ExtResource("2_bg_tex")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Portal" parent="." instance=ExtResource("7_portal")]
+position = Vector2(573, 530)
+
+[node name="Peti1" parent="." instance=ExtResource("4_chest")]
+position = Vector2(201, 360)
+
+[node name="Peti2" parent="." instance=ExtResource("4_chest")]
+position = Vector2(944, 360)
+
+[node name="GreenAzer" parent="." instance=ExtResource("5_leaf")]
+position = Vector2(424, 304)
+azer_type = "green_azer"
+
+[node name="RedAzer" parent="." instance=ExtResource("5_leaf")]
+position = Vector2(350, 417)
+azer_type = "red_azer"
+
+[node name="YellowAzer" parent="." instance=ExtResource("5_leaf")]
+position = Vector2(721, 304)
+azer_type = "yellow_azer"
+
+[node name="BlueAzer" parent="." instance=ExtResource("5_leaf")]
+position = Vector2(796, 417)
+azer_type = "blue_azer"
+
+[node name="WhiteAzer" parent="." instance=ExtResource("5_leaf")]
+position = Vector2(573, 360)
+azer_type = "white_azer"
+
+[node name="EnemyCommon" parent="." instance=ExtResource("6_enemy")]
+position = Vector2(350, 304)
+enemy_tier = "Common"
+
+[node name="EnemyRare" parent="." instance=ExtResource("6_enemy")]
+position = Vector2(796, 304)
+enemy_tier = "Rare"
+
+[node name="EnemyEpic" parent="." instance=ExtResource("6_enemy")]
+position = Vector2(573, 247)
+enemy_tier = "Epic"
+
+[node name="PlayerExplorer" parent="." instance=ExtResource("3_player")]
+position = Vector2(573, 530)
+grid_pos = Vector2i(6, 5)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="TopHUD" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 90.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="PlayerProfileCard" type="PanelContainer" parent="UI/TopHUD"]
+custom_minimum_size = Vector2(320, 72)
+layout_mode = 0
+offset_left = 18.0
+offset_top = 14.0
+offset_right = 348.0
+offset_bottom = 86.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hud_card")
+
+[node name="HBox" type="HBoxContainer" parent="UI/TopHUD/PlayerProfileCard"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="AvatarFrame" type="ColorRect" parent="UI/TopHUD/PlayerProfileCard/HBox"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_vertical = 4
+color = Color(0.2, 0.18, 0.28, 1)
+
+[node name="Label" type="Label" parent="UI/TopHUD/PlayerProfileCard/HBox/AvatarFrame"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "🧙"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBox" type="VBoxContainer" parent="UI/TopHUD/PlayerProfileCard/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="HeaderRow" type="HBoxContainer" parent="UI/TopHUD/PlayerProfileCard/HBox/VBox"]
+layout_mode = 2
+
+[node name="PlayerNameLabel" type="Label" parent="UI/TopHUD/PlayerProfileCard/HBox/VBox/HeaderRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.95, 0.95, 1, 1)
+theme_override_font_sizes/font_size = 12
+text = "ALCHEMIST (Lv. 1)"
+
+[node name="CoinsLabel" type="Label" parent="UI/TopHUD/PlayerProfileCard/HBox/VBox/HeaderRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.25, 1)
+theme_override_font_sizes/font_size = 12
+text = "💰 0 Coins"
+
+[node name="HPBar" type="ProgressBar" parent="UI/TopHUD/PlayerProfileCard/HBox/VBox"]
+custom_minimum_size = Vector2(0, 14)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_bar_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hp_fill")
+value = 100.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="UI/TopHUD/PlayerProfileCard/HBox/VBox/HPBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 9
+text = "100 / 100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SPBar" type="ProgressBar" parent="UI/TopHUD/PlayerProfileCard/HBox/VBox"]
+custom_minimum_size = Vector2(0, 14)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_bar_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_sp_fill")
+value = 50.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="UI/TopHUD/PlayerProfileCard/HBox/VBox/SPBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 9
+text = "50 / 100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EXPBar" type="ProgressBar" parent="UI/TopHUD/PlayerProfileCard/HBox/VBox"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_bar_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_exp_fill")
+value = 0.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="UI/TopHUD/PlayerProfileCard/HBox/VBox/EXPBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 8
+text = "0 / 100 EXP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BtnPause" type="Button" parent="UI/TopHUD"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 0
+offset_left = 1085.0
+offset_top = 18.0
+offset_right = 1125.0
+offset_bottom = 58.0
+tooltip_text = "Pause Menu (ESC)"
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_pause")
+text = "||"
+
+[node name="BtnReturnBase" type="Button" parent="UI"]
+custom_minimum_size = Vector2(170, 36)
+offset_left = 18.0
+offset_top = 596.0
+offset_right = 188.0
+offset_bottom = 632.0
+tooltip_text = "Leave map and return to Basecamp"
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_return")
+text = "🚪 RETURN TO BASECAMP"
+
+[node name="PauseModal" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Backdrop" type="ColorRect" parent="UI/PauseModal"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.75)
+
+[node name="Card" type="TextureRect" parent="UI/PauseModal"]
+custom_minimum_size = Vector2(460, 460)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -230.0
+offset_top = -230.0
+offset_right = 230.0
+offset_bottom = 230.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_pause_bg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TitleLabel" type="Label" parent="UI/PauseModal/Card"]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 100.0
+offset_right = 320.0
+offset_bottom = 135.0
+theme_override_colors/font_color = Color(0.2, 0.15, 0.1, 1)
+theme_override_font_sizes/font_size = 18
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="BtnLanjutkan" type="Button" parent="UI/PauseModal/Card"]
+custom_minimum_size = Vector2(160, 32)
+layout_mode = 0
+offset_left = 150.0
+offset_top = 155.0
+offset_right = 310.0
+offset_bottom = 187.0
+text = "Resume"
+
+[node name="BtnKembali" type="Button" parent="UI/PauseModal/Card"]
+custom_minimum_size = Vector2(160, 32)
+layout_mode = 0
+offset_left = 150.0
+offset_top = 200.0
+offset_right = 310.0
+offset_bottom = 232.0
+text = "Return to Basecamp"
+
+[node name="BtnPengaturan" type="Button" parent="UI/PauseModal/Card"]
+custom_minimum_size = Vector2(160, 32)
+layout_mode = 0
+offset_left = 150.0
+offset_top = 245.0
+offset_right = 310.0
+offset_bottom = 277.0
+text = "Settings"
+
+[node name="BtnKeluar" type="Button" parent="UI/PauseModal/Card"]
+custom_minimum_size = Vector2(160, 32)
+layout_mode = 0
+offset_left = 150.0
+offset_top = 290.0
+offset_right = 310.0
+offset_bottom = 322.0
+text = "Save & Quit"
+
+[node name="ToastLabel" type="Label" parent="UI/PauseModal/Card"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 345.0
+offset_right = 380.0
+offset_bottom = 375.0
+theme_override_colors/font_color = Color(0.25, 0.2, 0.15, 1)
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 1
