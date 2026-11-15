@@ -152,9 +152,9 @@ Proyektil alkimia volatil yang berfungsi sebagai senjata pemantul serangan anoma
 
 ## ⚠️ How to Download?
 
-* **Step 1:** Godot
-* **Step 2:** Adobe Illustrator & ibisPaint X
-* **Step 3:** GDScript
+* **Step 1:** 
+* **Step 2:** 
+* **Step 3:** 
 
 ---
 
