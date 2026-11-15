@@ -16,6 +16,7 @@
   <a href="#-anomaly-hierarchies">Anomalies</a> •
   <a href="#-alchemical-arsenal">Arsenal</a> •
   <a href="#-roadmap">Roadmap</a>
+  <a href="#-download">How to Download?</a>
 </p>
 
 ---
@@ -98,9 +99,17 @@ Proyektil alkimia volatil yang berfungsi sebagai senjata pemantul serangan anoma
 - [x] Konseptualisasi Lore & Desain Anomali
 - [x] Standardisasi Sistem Alkimia & Proyektil (Viexir)
 - [x] Perancangan UI Cooldown System
-- [ ] Implementasi Sistem Eksplorasi *Tile-Based* (Grid/Pathing)
-- [ ] Prototipe Mekanik Lemparan Fisika 2D (Arcade Battle)
+- [x] Implementasi Sistem Eksplorasi *Tile-Based* (Grid/Pathing)
+- [x] Prototipe Mekanik Lemparan Fisika 2D (Arcade Battle)
 - [ ] Integrasi Audio & Visual Polish (Sunburst Reward FX)
+
+---
+
+## ⚠️ How to Download?
+
+* **Step 1:** Godot
+* **Step 2:** Adobe Illustrator & ibisPaint X
+* **Step 3:** GDScript
 
 ---
 
