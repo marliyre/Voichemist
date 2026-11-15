@@ -35,7 +35,7 @@ Dikembangkan dengan pendekatan **UI-based exploration** dan **arcade physics com
 
 ## 🎮 Core Gameplay
 
-Gim ini terbagi menjadi dua fase utama yang saling mendukung:
+Gim ini terbagi menjadi empat fase utama yang saling mendukung:
 
 ```
 [ Basecamp & Exploration ] ───(Crafting, Brewing, & Tile Map)───► [ Arcade Battle Phase ]
