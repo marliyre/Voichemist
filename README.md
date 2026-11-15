@@ -67,7 +67,7 @@ Nama anomali di dalam permainan ini adalah The Wanderers yang dikategorikan menj
 
 ## 🧪 Alchemical Arsenal
 
-## 💥 The Big 3 Projectile
+## The Big 3 Projectile
 
 ### Offense Viexir (Viexir Serang) - Primary Projectile (Damage Dealer)
 <div align="left">
