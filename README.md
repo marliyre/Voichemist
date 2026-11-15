@@ -94,6 +94,8 @@ Proyektil alkimia volatil yang berfungsi sebagai senjata pemantul serangan anoma
 
 ---
 
+<a name="roadmap"></a>
+
 ## 🗺️ Development Roadmap
 
 - [x] Konseptualisasi Lore & Desain Anomali
@@ -104,6 +106,8 @@ Proyektil alkimia volatil yang berfungsi sebagai senjata pemantul serangan anoma
 - [ ] Integrasi Audio & Visual Polish (Sunburst Reward FX)
 
 ---
+
+<a name="download"></a>
 
 ## ⚠️ How to Download?
 
