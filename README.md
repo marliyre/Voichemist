@@ -70,19 +70,35 @@ Nama anomali di dalam permainan ini adalah The Wanderers yang dikategorikan menj
 ### 💥 The Big 3 Projectile
 
 #### 1. Offense Viexir (Viexir Serang) - Primary Projectile (Damage Dealer)
+
+<img width="4096" height="4096" alt="(1) Viexir Serang" src="https://github.com/user-attachments/assets/b38f65fe-ef61-416d-a46c-f2f830305beb" />
+
 Proyektil alkimia volatil yang berfungsi sebagai senjata penghasil *damage* utama bagi para Voichemist untuk membasmi anomali.
 
 #### 2. Neutralize Viexir (Viexir Netralisir) - Secondary Projectile (Debuff/Purification)
+
+<img width="4096" height="4096" alt="(1) Viexir Netralisir" src="https://github.com/user-attachments/assets/996471d7-45bc-4422-906d-4776b1c62fbc" />
+
 Proyektil alkimia volatil yang berfungsi sebagai senjata pengurang kekuatan anomali sekaligus menangani akumulasi *poison*.
 
 #### 3. Defense Viexir (Viexir Tahan) - Secondary Projectile (Defensive/Counter)
+
+<img width="4096" height="4096" alt="(1) Viexir Tahan" src="https://github.com/user-attachments/assets/265cc0b7-0cb6-4698-9138-7022b59c935a" />
+
 Proyektil alkimia volatil yang berfungsi sebagai senjata pemantul serangan anomali kepada sumbernya.
 
 ### 🛡️ Utility Potions
 * **Vitae** *(Heal Potion)* — Merajut kembali jaringan tubuh yang rusak akibat serbuan miasma dan racun.
+* <img width="4096" height="4096" alt="Potion Heal" src="https://github.com/user-attachments/assets/1e6d8ebf-7b4e-487b-802c-225180e1b048" />
+
 * **Umbra** *(Invisible Potion)* — Menyemprotkan selubung bayangan untuk menyamarkan wujud dan suhu tubuh dari kejauhan.
+* <img width="4096" height="4096" alt="Potion Invisible" src="https://github.com/user-attachments/assets/e7ce0c1e-f7ea-41a9-b805-87d987439d86" />
+
 * **Vigor** *(Stamina Potion)* — Memacu denyut nadi dan memulihkan daya tahan fisik untuk memperpanjang jalan ekspedisi.
+* <img width="4096" height="4096" alt="Potion Stamina" src="https://github.com/user-attachments/assets/1cc7443c-4603-44ee-a650-320e19696f03" />
+
 * **Zephyr** *(Wind Potion)* — Mendatangkan keberuntungan melalui hembusan angin yang mengganggu lintasan proyektil anomali.
+* <img width="4096" height="4096" alt="Potion Wind" src="https://github.com/user-attachments/assets/9a6a9865-34cd-4f15-9f23-c0cbfe02f01c" />
 
 ---
 
