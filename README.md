@@ -69,7 +69,7 @@ Nama anomali di dalam permainan ini adalah The Wanderers yang dikategorikan menj
 
 ### 💥 The Big 3 Projectile
 
-#### 1. Offense Viexir (Viexir Serang) - Primary Projectile (Damage Dealer)
+### Offense Viexir (Viexir Serang) - Primary Projectile (Damage Dealer)
 <div align="left">
 
 <img width="200" alt="(1) Viexir Serang" src="https://github.com/user-attachments/assets/b38f65fe-ef61-416d-a46c-f2f830305beb" />
@@ -78,7 +78,7 @@ Nama anomali di dalam permainan ini adalah The Wanderers yang dikategorikan menj
 
 Proyektil alkimia volatil yang berfungsi sebagai senjata penghasil *damage* utama bagi para Voichemist untuk membasmi anomali.
 
-#### 2. Neutralize Viexir (Viexir Netralisir) - Secondary Projectile (Debuff/Purification)
+### Neutralize Viexir (Viexir Netralisir) - Secondary Projectile (Debuff/Purification)
 <div align="left">
 
 <img width="200" alt="(1) Viexir Netralisir" src="https://github.com/user-attachments/assets/996471d7-45bc-4422-906d-4776b1c62fbc" />
@@ -87,7 +87,7 @@ Proyektil alkimia volatil yang berfungsi sebagai senjata penghasil *damage* utam
 
 Proyektil alkimia volatil yang berfungsi sebagai senjata pengurang kekuatan anomali sekaligus menangani akumulasi *poison*.
 
-#### 3. Defense Viexir (Viexir Tahan) - Secondary Projectile (Defensive/Counter)
+### Defense Viexir (Viexir Tahan) - Secondary Projectile (Defensive/Counter)
 <div align="left">
 
 <img width="200" alt="(1) Viexir Tahan" src="https://github.com/user-attachments/assets/265cc0b7-0cb6-4698-9138-7022b59c935a" />
