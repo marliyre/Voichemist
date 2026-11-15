@@ -15,7 +15,7 @@
   <a href="#-core-gameplay">Gameplay</a> •
   <a href="#-anomaly-hierarchies">Anomalies</a> •
   <a href="#-alchemical-arsenal">Arsenal</a> •
-  <a href="#-roadmap">Roadmap</a>
+  <a href="#-roadmap">Roadmap</a> •
   <a href="#-download">How to Download?</a>
 </p>
 
